@@ -89,5 +89,20 @@ namespace ExpenseTracker.WinForms.Data
             }
         }
 
+        public void Delete(int id)
+        {
+            using (var con = Database.GetConnection())
+            {
+                con.Open();
+                string sql = "DELETE FROM Expenses WHERE Id = @id";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql,con))
+                {
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

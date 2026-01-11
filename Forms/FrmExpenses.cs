@@ -33,7 +33,7 @@ namespace ExpenseTracker.WinForms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            try
+           try
             {
 
                 Expense expense = new Expense()
@@ -53,9 +53,11 @@ namespace ExpenseTracker.WinForms
                 {
                     expense.Id = _selectedId;
                     _expenseRepo.Update(expense);
+                    MessageBox.Show("Expense Updated successfully");
                 }
 
                 ClearForm();
+                LoadExpenses();
 
             }
             catch (Exception ex)
@@ -88,6 +90,24 @@ namespace ExpenseTracker.WinForms
                 txtAmount.Text = row.Cells["Amount"].Value.ToString();
                 txtNotes.Text = row.Cells["Notes"].Value.ToString();
 
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_selectedId == 0) return;
+
+                _expenseRepo.Delete(_selectedId);
+                LoadExpenses() ;
+                ClearForm();
+                _selectedId = 0;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex}");
             }
         }
     }
