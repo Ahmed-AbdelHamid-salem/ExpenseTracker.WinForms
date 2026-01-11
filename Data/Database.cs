@@ -6,8 +6,8 @@ namespace ExpenseTracker.WinForms.Data
     public static class Database
     {
 
-        private static string dbFile = "expenses.db";
-        private static string connectionString = $"Data Source = {dbFile}; Version = 3;";
+        private readonly static string dbFile = "expenses.db";
+        private readonly static string connectionString = $"Data Source = {dbFile}; Version = 3;";
 
         public static SQLiteConnection GetConnection()
         {
@@ -27,7 +27,7 @@ namespace ExpenseTracker.WinForms.Data
                 con.Open();
 
                 string sql = @"CREATE TABLE Expenses (
-                                ID INTEGER PRIMARY KEY AUTOINCREMENT
+                                ID INTEGER PRIMARY KEY AUTOINCREMENT,
                                 ExpenseDate TEXT,
                                 Title TEXT,
                                 Amount REAL,
