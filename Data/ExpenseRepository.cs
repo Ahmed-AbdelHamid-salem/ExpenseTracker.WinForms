@@ -57,8 +57,35 @@ namespace ExpenseTracker.WinForms.Data
                         }
                     }
                 }
+            }
 
+            return list;
 
+        }
+
+        public void Update(Expense expense)
+        {
+            using (SQLiteConnection con =  Database.GetConnection())
+            {
+                con.Open();
+
+                string sql = @"UPDATE Expenses SET
+                               ExpenseDate=@date,
+                               Title=@title,
+                               Amount=@amount,
+                               Notes=@notes
+                               WHERE Id=@id";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql,con))
+                {
+                    cmd.Parameters.AddWithValue("@date", expense.ExpenseDate);
+                    cmd.Parameters.AddWithValue("@title", expense.Title);
+                    cmd.Parameters.AddWithValue("@amount", expense.Amount);
+                    cmd.Parameters.AddWithValue("@notes", expense.Notes);
+                    cmd.Parameters.AddWithValue("@id", expense.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 

@@ -9,6 +9,7 @@ namespace ExpenseTracker.WinForms
     {
 
         private ExpenseRepository _expenseRepo;
+        private int _selectedId = 0;
 
         public FrmExpenses()
         {
@@ -43,8 +44,16 @@ namespace ExpenseTracker.WinForms
                     Notes = txtNotes.Text
                 };
 
-                _expenseRepo.Add(expense);
-                MessageBox.Show("Expense saved successfully");
+                if (_selectedId == 0)
+                {
+                    _expenseRepo.Add(expense);
+                    MessageBox.Show("Expense saved successfully");
+                }
+                else
+                {
+                    expense.Id = _selectedId;
+                    _expenseRepo.Update(expense);
+                }
 
                 ClearForm();
 
@@ -64,6 +73,21 @@ namespace ExpenseTracker.WinForms
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex}");
+            }
+        }
+
+        private void DgvExpenses_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvExpenses.Rows[e.RowIndex];
+                _selectedId = (int)row.Cells["Id"].Value;
+
+                dtpDate.Value = (DateTime)row.Cells["ExpenseDate"].Value;
+                txtTitle.Text = row.Cells["Title"].Value.ToString();
+                txtAmount.Text = row.Cells["Amount"].Value.ToString();
+                txtNotes.Text = row.Cells["Notes"].Value.ToString();
+
             }
         }
     }
