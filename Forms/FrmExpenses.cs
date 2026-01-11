@@ -21,6 +21,7 @@ namespace ExpenseTracker.WinForms
         private void LoadExpenses()
         {
             dgvExpenses.DataSource = _expenseRepo.GetAll();
+            LoadTotalAmount();
         }
 
 
@@ -113,5 +114,13 @@ namespace ExpenseTracker.WinForms
                 MessageBox.Show($"Error: {ex}");
             }
         }
+
+        private void LoadTotalAmount()
+        {
+            decimal total = _expenseRepo.GetTotalAmount();
+            lblTotalAmount.Text = $"Total Expenses: {total:N2}";
+        }
+
+
     }
 }

@@ -104,5 +104,22 @@ namespace ExpenseTracker.WinForms.Data
             }
         }
 
+        public decimal GetTotalAmount()
+        {
+            using (SQLiteConnection con = Database.GetConnection())
+            {
+                con.Open();
+
+                string sql = "SELECT IFNULL(SUM(Amount), 0) FROM Expenses";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql,con))
+                {
+                    return Convert.ToDecimal(cmd.ExecuteScalar());
+                }
+
+            }
+        }
+
+
     }
 }

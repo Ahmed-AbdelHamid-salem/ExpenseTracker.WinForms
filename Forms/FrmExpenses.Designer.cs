@@ -38,6 +38,7 @@
             this.dgvExpenses = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.BtnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExpenses)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,12 +202,23 @@
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.Font = new System.Drawing.Font("Tajawal Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAmount.Location = new System.Drawing.Point(12, 405);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(406, 40);
+            this.lblTotalAmount.TabIndex = 6;
+            this.lblTotalAmount.Text = "Total Expenses: 0.00\r\n";
+            this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmExpenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(652, 454);
+            this.Controls.Add(this.lblTotalAmount);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.dgvExpenses);
             this.Controls.Add(this.BtnDelete);
@@ -230,6 +242,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtNotes;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDate;
         private Guna.UI2.WinForms.Guna2Button BtnDelete;
+        private System.Windows.Forms.Label lblTotalAmount;
     }
 }
 
