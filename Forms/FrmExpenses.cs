@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ExpenseTracker.WinForms
 {
-    public partial class Form1 : Form
+    public partial class FrmExpenses : Form
     {
-        public Form1()
+        public FrmExpenses()
         {
             InitializeComponent();
         }
