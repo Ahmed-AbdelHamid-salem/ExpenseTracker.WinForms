@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Database.cs" />
+    <Compile Include="Data\ExpenseRepository.cs" />
     <Compile Include="Forms\FrmExpenses.cs">
       <SubType>Form</SubType>
     </Compile>
