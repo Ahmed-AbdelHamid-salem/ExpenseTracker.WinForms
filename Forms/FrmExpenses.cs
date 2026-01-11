@@ -16,6 +16,12 @@ namespace ExpenseTracker.WinForms
             _expenseRepo = new ExpenseRepository();
         }
 
+        private void LoadExpenses()
+        {
+            dgvExpenses.DataSource = _expenseRepo.GetAll();
+        }
+
+
         private void ClearForm()
         {
             txtTitle.Clear();
@@ -42,6 +48,18 @@ namespace ExpenseTracker.WinForms
 
                 ClearForm();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex}");
+            }
+        }
+
+        private void FrmExpenses_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadExpenses();
             }
             catch (Exception ex)
             {

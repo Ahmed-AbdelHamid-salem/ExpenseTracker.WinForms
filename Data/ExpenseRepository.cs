@@ -1,5 +1,6 @@
 ﻿using ExpenseTracker.WinForms.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace ExpenseTracker.WinForms.Data
@@ -26,6 +27,38 @@ namespace ExpenseTracker.WinForms.Data
 
                     cmd.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public List<Expense> GetAll()
+        {
+            List<Expense> list = new List<Expense>();
+
+            using (SQLiteConnection con = Database.GetConnection())
+            {
+                con.Open();
+
+                string sql = "SELECT * FROM Expenses ORDER BY ExpenseDate DESC";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql,con))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read()) 
+                        {
+                            list.Add(new Expense()
+                            {
+                                Id = reader.GetInt32(0),
+                                ExpenseDate = DateTime.Parse(reader.GetString(1)),
+                                Title = reader.GetString(2),
+                                Amount = reader.GetDecimal(3),
+                                Notes = reader.GetString(4)
+                            });
+                        }
+                    }
+                }
+
+
             }
         }
 

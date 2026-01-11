@@ -126,7 +126,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvExpenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExpenses.ColumnHeadersHeight = 4;
+            this.dgvExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
@@ -152,7 +153,7 @@
             this.dgvExpenses.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvExpenses.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Tahoma", 8F);
             this.dgvExpenses.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvExpenses.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExpenses.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvExpenses.ThemeStyle.HeaderStyle.Height = 4;
             this.dgvExpenses.ThemeStyle.ReadOnly = false;
             this.dgvExpenses.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
@@ -195,6 +196,7 @@
             this.Controls.Add(this.txtTitle);
             this.Name = "FrmExpenses";
             this.Text = "Expense Tracker";
+            this.Load += new System.EventHandler(this.FrmExpenses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExpenses)).EndInit();
             this.ResumeLayout(false);
 
