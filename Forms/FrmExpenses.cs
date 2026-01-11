@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.WinForms.Data;
+using ExpenseTracker.WinForms.Helpers;
 using ExpenseTracker.WinForms.Models;
 using System;
 using System.Windows.Forms;
@@ -35,6 +36,9 @@ namespace ExpenseTracker.WinForms
         {
            try
             {
+
+                if (ValidationHelper.IsTextEmpty(txtTitle, "Title")) return;
+                if (!ValidationHelper.IsValidDecimal(txtAmount, "Amount")) return;
 
                 Expense expense = new Expense()
                 {
@@ -89,7 +93,6 @@ namespace ExpenseTracker.WinForms
                 txtTitle.Text = row.Cells["Title"].Value.ToString();
                 txtAmount.Text = row.Cells["Amount"].Value.ToString();
                 txtNotes.Text = row.Cells["Notes"].Value.ToString();
-
             }
         }
 
