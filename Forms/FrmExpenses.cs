@@ -24,14 +24,12 @@ namespace ExpenseTracker.WinForms
             LoadTotalAmount();
         }
 
-
         private void ClearForm()
         {
             txtTitle.Clear();
             txtAmount.Clear();
             txtNotes.Clear();
         }
-
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -88,9 +86,9 @@ namespace ExpenseTracker.WinForms
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvExpenses.Rows[e.RowIndex];
-                _selectedId = (int)row.Cells["Id"].Value;
+                _selectedId = Convert.ToInt32(row.Cells["ID"].Value);
 
-                dtpDate.Value = (DateTime)row.Cells["ExpenseDate"].Value;
+                dtpDate.Value = Convert.ToDateTime(row.Cells["ExpenseDate"].Value);
                 txtTitle.Text = row.Cells["Title"].Value.ToString();
                 txtAmount.Text = row.Cells["Amount"].Value.ToString();
                 txtNotes.Text = row.Cells["Notes"].Value.ToString();
