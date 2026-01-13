@@ -22,6 +22,7 @@ namespace ExpenseTracker.WinForms
         {
             dgvExpenses.DataSource = _expenseRepo.GetAll();
             LoadTotalAmount();
+            txtTitle.Select();
         }
 
         private void ClearForm()
@@ -29,6 +30,7 @@ namespace ExpenseTracker.WinForms
             txtTitle.Clear();
             txtAmount.Clear();
             txtNotes.Clear();
+            txtTitle.Select();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -119,6 +121,22 @@ namespace ExpenseTracker.WinForms
             lblTotalAmount.Text = $"Total Expenses: {total:N2}";
         }
 
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("خروج من البرنامج؟","تنبيه",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
 
+        private void BtnMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void BtnClearInputs_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
     }
 }
